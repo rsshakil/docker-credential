@@ -6,7 +6,7 @@ import * as path from "node:path";
 
 export default defineConfig({
     server: {
-        host: '52.53.159.110',
+        host: '172.21.0.4',
         port: 5173
       },
     plugins: [
