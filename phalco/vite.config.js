@@ -5,6 +5,10 @@ import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 import * as path from "node:path";
 
 export default defineConfig({
+    server: {
+        host: '0.0.0.0',
+        port: 5173
+      },
     plugins: [
         laravel({
             input: ['resources/js/app.js'],
