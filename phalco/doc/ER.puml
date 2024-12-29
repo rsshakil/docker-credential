@@ -1,0 +1,401 @@
+@startuml
+package "ユーザー情報"
+{
+    entity "ユーザー" as User
+    {
+        ニックネーム
+        メールアドレス
+        登録日時
+        ユーザーステータス
+        言語設定
+        KYCステータス
+        本名
+    }
+
+    entity "KYC情報"
+    {
+        ユーザーID
+        管理者ID
+        承認
+        却下理由
+    }
+
+    entity "KYC画像"
+    {
+        KYC情報ID
+        KYC画像
+    }
+
+    entity "実績"
+    {
+        ユーザーID
+        トレード数
+        平均支払時間
+        平均リリース時間
+        トレード精度
+        被ブロック数
+    }
+
+    entity "ブロックユーザー管理"
+    {
+        ユーザーID
+        ブロックユーザーID
+        登録日時
+    }
+
+    entity "支払情報" as BuyerPayment
+    {
+        ユーザーID
+        支払方法ID
+        ●削除日時
+    }
+
+    entity "支払先情報" as SellerPayment
+    {
+        ユーザーID
+        支払方法ID
+        削除日時
+    }
+
+    entity "支払先情報の項目" as SellerPaymentItem
+    {
+        支払先情報ID
+        支払方法の項目定義ID
+        設定値
+    }
+
+    entity "オプションの設定値" as SellerPaymentItemOption
+    {
+        支払先情報の項目ID
+        支払方法の項目のオプション定義ID
+    }
+}
+
+package オファーとトレード
+{
+    entity "オファー" as Offer
+    {
+        オファー種類
+        ユーザーID
+        商品ID
+        申請時数量
+        総数量
+        通貨ID
+        最小トレード可能額
+        最大トレード可能額
+        レート種類
+        レート
+        支払いまでの時間
+        オファーステータス
+        問題報告ステータス
+        備考
+        申請日時
+        掲載開始日時
+        一時預かり用運営アカウントID
+    }
+
+    entity "トレード" as Trade
+    {
+        オファーID
+        BuyerID
+        SellerID
+        商品ID
+        商品数量
+        レート
+        トレードステータス
+        Buyer問題報告ステータス
+        Seller問題報告ステータス
+        開始日時
+        一時預かり用運営アカウントID
+        支払先情報ID
+        Buyer商品送付先ID
+        Seller商品送付先ID
+        責任ユーザー
+    }
+
+    entity "トレード操作履歴" as TradeHistory
+    {
+        トレードID
+
+        操作ユーザー種類（morphTo）
+        操作ユーザーID
+        運営アカウントID
+
+        操作日時
+        操作後トレードステータス
+        理由
+    }
+
+    entity "オファー操作履歴"
+    {
+        オファーID
+
+        操作ユーザー種類（morphTo）
+        操作ユーザーID
+        運営アカウントID
+
+        操作日時
+        操作後オファーステータス
+        理由
+    }
+
+    entity "トレード条件"
+    {
+        オファーID
+        トレード数
+        平均支払時間
+        平均リリース時間
+        トレード精度
+        被ブロック数
+    }
+}
+
+
+package チャット
+{
+
+    entity "チャットルーム"
+    {
+        オファー/トレード（morphTo）
+        オファー/トレードID
+
+        ルーム種類
+    }
+
+    entity "チャットルームユーザー"
+    {
+        チャットルームID
+
+        ユーザー種類（morphTo）
+        ユーザーID
+
+        最後に読んだメッセージ
+    }
+
+    entity "チャットメッセージ"
+    {
+        チャットルームユーザーID
+        メッセージ
+        メッセージ種類
+        時間
+    }
+
+}
+
+package 商品
+{
+    entity "商品" as Product
+    {
+        商品名
+        ロゴ
+        単位
+        小数桁数
+        通貨ID
+        ベース通貨レート
+        トレード手数料
+        返送手数料
+        削除日時
+    }
+
+    entity "運営アカウント" as AdminProductAccount
+    {
+        名前
+        商品ID
+        一時預かり用
+        送付用
+        削除日時
+    }
+
+    entity "商品送付先" as UserProductAccount
+    {
+        ユーザーID
+        商品ID
+        削除日時
+    }
+
+    entity "商品送付先の項目" as UserProductAccountItem
+    {
+        商品送付先ID
+        商品送付先の項目定義ID
+        設定値
+    }
+
+    entity "運営アカウントの項目" as AdminProductAccountItem
+    {
+        運営アカウントID
+        商品送付先の項目定義ID
+        設定値
+    }
+
+    entity "商品送付先の項目定義" as ProductAccountItem
+    {
+        商品ID
+        項目種類
+        項目名
+    }
+
+    entity "商品送付先の項目のオプション定義" as ProductAccountItemOption
+    {
+        商品送付先の項目定義ID
+        項目名
+    }
+
+    entity "オプションの設定値" as AdminProductAccountItemOption
+    {
+        運営アカウントの項目ID
+        商品送付先の項目のオプション定義ID
+    }
+
+    entity "オプションの設定値" as UserProductAccountItemOption
+    {
+        商品送付先の項目ID
+        商品送付先の項目のオプション定義ID
+    }
+}
+
+package "支払"
+{
+    entity "支払方法" as PaymentMethod
+    {
+        通貨ID
+        名前
+        ロゴ
+        削除日時
+    }
+
+    entity "支払方法の項目定義" as PaymentMethodItem
+    {
+        支払方法ID
+        項目種類
+        項目名
+    }
+
+    entity "支払方法の項目のオプション定義" as PaymentMethodItemOption
+    {
+        支払方法の項目定義ID
+        項目名
+    }
+}
+
+package 通貨
+{
+    entity "通貨" as Currency
+    {
+        名称
+        コード
+        小数桁数
+        最小トレード額
+        削除日時
+    }
+
+    entity "通貨レート" as CurrencyRate
+    {
+        ベース通貨ID
+        対象通貨ID
+        レート
+    }
+}
+
+entity "管理者" as Administrator
+{
+    名前
+    メールアドレス
+    権限種類
+    登録日時
+    削除日時
+}
+
+entity "お知らせ" as Announcement
+{
+    お知らせカテゴリID
+    名前
+    タイトル
+    内容
+    開始日時
+    終了日時
+    サムネイル
+    削除日時
+}
+
+entity "お知らせカテゴリ" as AnnouncementCategory
+{
+    名前
+    サムネイル表示
+    削除日時
+}
+
+entity "FAQ" as Faq
+{
+    名前
+    内容
+    カテゴリ
+    削除日時
+}
+
+entity "エラーログ" as ErrorLog
+{
+    ID
+    ファイル
+    行番号
+    エラーコード
+    メッセージ
+    発生日
+    発生回数
+}
+
+User ||-u-o{ SellerPayment
+User ||-r-o{ BuyerPayment
+User ||-u-|| 実績
+User ||-u-o| KYC情報
+User ||-l-o{ ブロックユーザー管理
+KYC情報 ||-l-|{ KYC画像
+SellerPayment ||-r-|{ SellerPaymentItem
+
+Offer ||-l-o{ Trade
+Offer ||-u-o{ オファー操作履歴
+Trade ||-u-o{ TradeHistory
+Offer ||-d-|| トレード条件
+
+PaymentMethod ||-r-|{ PaymentMethodItem
+PaymentMethodItem ||-r-o{ PaymentMethodItemOption
+
+Currency }o-o{ CurrencyRate
+
+
+Product ||--|{ ProductAccountItem
+ProductAccountItem ||--o{ ProductAccountItemOption
+Product ||--o{ AdminProductAccount
+Product ||--o{ UserProductAccount
+AdminProductAccount ||-|{ AdminProductAccountItem
+UserProductAccount ||--|{ UserProductAccountItem
+AdminProductAccountItem ||--|| ProductAccountItem
+UserProductAccountItem ||--|| ProductAccountItem
+AdminProductAccountItem ||--o{ AdminProductAccountItemOption
+UserProductAccountItem ||--o{ UserProductAccountItemOption
+AdminProductAccountItemOption }o--|| ProductAccountItemOption
+UserProductAccountItemOption }o--|| ProductAccountItemOption
+
+
+チャットルーム ||--|{ チャットルームユーザー
+チャットルームユーザー ||-d-|{ チャットメッセージ
+
+AnnouncementCategory ||--|{ Announcement
+
+User ||--o{ Trade
+User ||--o{ Offer
+User ||--o{ UserProductAccount
+SellerPayment }o--|| PaymentMethod
+BuyerPayment }o--|| PaymentMethod
+Product }o-|| Currency
+SellerPaymentItem ||--|{ PaymentMethodItem
+SellerPaymentItem ||-o{ SellerPaymentItemOption
+SellerPaymentItemOption }o--|| PaymentMethodItemOption
+
+Offer }o--|| Product
+Offer }o-|| Currency
+
+PaymentMethod }o-|| Currency
+
+Offer ||-o{ チャットルーム
+Trade ||---o{ チャットルーム
+@enduml

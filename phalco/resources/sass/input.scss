@@ -1,0 +1,176 @@
+// Import the variables
+@import './variable';
+/* style q-select start */
+.q-field-common {
+  .q-field__control,
+  .q-field__native,
+  .q-field__prefix,
+  .q-field__suffix,
+  .q-field__marginal,
+  .q-item {
+      height: $q-input-height !important;
+      min-height: $q-input-height !important;
+      outline: none !important;
+      font-size: $q-input-font-size !important;
+  }
+}
+.smaller-q-selectField {
+    min-width: 200px;
+    .q-field__native.row.items-center:has(span:empty) {
+        display: none;
+    }
+}
+.no-spin input[type="number"]::-webkit-outer-spin-button,
+.no-spin input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.no-spin input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.textarea-input-field{
+  textarea
+  {
+      padding-top: 6px !important;
+      height: 80px !important;
+    }
+}
+
+/* style q-select end */
+
+body.screen--md,
+body.screen--xl,
+body.screen--lg {
+  .width-of-amount-field-area{
+    width: 255px;
+  }
+  .width-of-amount-field,
+  .width-of-rate-type-field,
+  .width-of-min-max-amount-field,
+  .width-of-product-select-field{
+    width: 150px;
+  }
+  .width-of-currency-select-field{
+    width: 100px;
+  }
+  .width-of-rate-type-select-field,
+  .width-of-min-max-field-area
+  {
+    width: 200px;
+  }
+
+
+  .form-field-suffix {
+    margin-left: $form-field-suffix-margin-left; /* フィールドとの間隔を調整 */
+    font-size: $form-field-suffix-font-size;
+  }
+  
+  .label-form-title{ 
+    margin-right: 15px;
+    font-size: $font-size-form-title;
+    vertical-align: middle;
+    margin-bottom: $margin-bottom-form-title;
+    display: inline-block;
+  }
+  
+  .label-form-sub-title{ 
+    margin-right: 15px;
+    font-size: $font-size-sub-title;
+    vertical-align: middle;
+    margin-bottom: $margin-bottom-sub-title;
+    display: inline-block;
+  }
+  .label-category-title{ 
+    margin-right: 15px;
+    font-size: $font-size-category-title;
+    vertical-align: middle;
+    margin-bottom: $margin-bottom-category-title;
+    display: inline-block;
+  }
+  .label-of-btn-title{ 
+    margin-right: 15px;
+    font-size: $font-size-of-btn-title;
+    vertical-align: middle;
+    margin-bottom: $margin-bottom-of-btn-title;
+    display: inline-block;
+  }
+
+}
+.label-sub-title-info {
+  font-size: 10px;
+  display: inline-block;
+  width: 100%;
+}
+
+.q-field--disabled{
+  background-color: #999;
+}
+
+.bg-alert-info{
+  background-color: #fcf4e3;
+}
+
+body.screen--xs,
+body.screen--sm {
+  .width-of-amount-field,
+  .width-of-rate-type-field,
+  .width-of-min-max-amount-field{
+    width: 100px;
+  }
+  .width-of-currency-select-field{
+    width: 100px;
+  }
+  .width-of-rate-type-select-field,
+  .width-of-product-select-field{
+    width: 150px;
+  }
+  .q-hint-text{
+    font-size: 8px !important;
+    bottom: -15px;
+  }
+
+  .form-field-suffix {
+    margin-left: $mobile-form-field-suffix-margin-left; /* フィールドとの間隔を調整 */
+    font-size: $mobile-form-field-suffix-font-size;
+  }
+
+  .label-form-title{ 
+    margin-right: 15px;
+    font-size: $mobile-font-size-form-title;
+    vertical-align: middle;
+    margin-bottom: $mobile-margin-bottom-form-title;
+    display: inline-block;
+  }
+
+  .label-form-sub-title{ 
+    margin-right: 15px;
+    font-size: $mobile-font-size-sub-title;
+    vertical-align: middle;
+    margin-bottom: $mobile-margin-bottom-sub-title;
+    display: inline-block;
+  }
+  .label-category-title{ 
+    margin-right: 15px;
+    font-size: $mobile-font-size-category-title;
+    vertical-align: middle;
+    margin-bottom: $mobile-margin-bottom-category-title;
+    display: inline-block;
+  }
+  .label-of-btn-title{ 
+    margin-right: 15px;
+    font-size: $mobile-font-size-of-btn-title;
+    vertical-align: middle;
+    margin-bottom: $mobile-margin-bottom-of-btn-title;
+    display: inline-block;
+  }
+
+}
+
+.chat-field{
+  width: 100%;
+}
+
+.preformatted {
+  white-space: pre-wrap;
+}

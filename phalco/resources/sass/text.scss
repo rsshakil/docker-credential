@@ -1,0 +1,59 @@
+// Import the variables
+@import './variable';
+/* local coin test color */
+.text--base {
+    color: $main-color;
+}
+
+.text--primary {
+    color: #4634ff;
+}
+
+.text--secondary {
+    color: #868e96;
+}
+
+.text--success {
+    color: #28c76f;
+}
+
+.text--danger {
+    color: #ea5455;
+}
+
+.text--warning {
+    color: #ff9f43;
+}
+
+.text--info {
+    color: #1e9ff2;
+}
+
+.text--dark {
+    color: #10163A;
+}
+
+.text--white {
+    color: #ffffff;
+}
+
+.active {
+    color: #ffffff;
+    background-color: $main-color;
+}
+//TEXT AND BACKGROUND COLOR HANDLE
+.label-customer-name {
+    color: $main-color;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.page-title {
+    font-size: $page-title-font-size;
+}
+
+.pay-notify{
+    color: #ea5455;
+    font-size: 10px;
+    margin-bottom: 0;
+}

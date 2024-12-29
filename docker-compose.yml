@@ -1,0 +1,53 @@
+version: '3.5'
+
+networks:
+  phalco-network:
+    driver: bridge
+
+services:
+
+### MySQL ################################################
+  mysql:
+    container_name: phalco_mysql
+    build:
+      context: ./docker/buildFile/mysql
+      args:
+        - MYSQL_VERSION=${MYSQL_VERSION}
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ./docker/buildFile/mysql/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/containerFile/db/mysql:/var/lib/mysql
+    ports:
+      - "${IP}:${MYSQL_PORT}:3306"
+    networks:
+      - phalco-network
+
+### PHP8.3 ###############################################
+  php:
+    container_name: phalco_php
+    build:
+      context: ./docker/buildFile/php
+    ports:
+      - "${IP}:${PHP_PORT}:80"
+    volumes:
+      - ${APP_CODE_PATH_SRC}:${APP_CODE_PATH_CONTAINER}
+      - ${APACHE_LOG_DIR}:/var/log/apache2
+    environment:
+      - TZ=${TIMEZONE}
+    networks:
+      - phalco-network
+
+  redis:
+        image: 'redis:alpine'
+        ports:
+            - '${FORWARD_REDIS_PORT:-6379}:6379'
+        volumes:
+            - './docker/buildFile/redis:/data'
+        networks:
+            - phalco-network
+

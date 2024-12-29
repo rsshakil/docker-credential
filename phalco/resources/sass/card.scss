@@ -1,0 +1,48 @@
+body.screen--md,
+body.screen--xl,
+body.screen--lg {
+    .component-center-body{
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .width-modal {
+        width: 60%;
+    }
+}
+body.screen--xs,
+body.screen--sm {
+    .width-modal {
+        width: 90%;
+    }
+}
+
+.card-payment-item-list {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.border-left-offer-create {
+    border-left: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+.title-left-text{
+    font-size: 14px;
+}
+
+.title-right-text{
+    font-size: 14px;
+    font-weight: bold;
+    word-break: break-all;
+    max-width: 320px;
+    max-height: 80px;
+    overflow-y: auto;
+}
+
+.confirm-dialog {
+    width: 600px;
+    max-width: 90vw;
+}
+
+.bg-disabled{
+    background: rgba(128, 128, 128, 0.4);
+}

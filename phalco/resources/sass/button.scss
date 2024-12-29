@@ -1,0 +1,74 @@
+// Import the variables
+@import './variable';
+
+/* button bg color & text color */
+.payment-method{
+    background-color: $button-payment-bg;
+    color: $button-payment-text;
+}
+
+.button-submit {
+  background-color: $button-submit-bg;
+  color: $button-submit-text;  
+}
+
+.button-cancel {
+    background-color: $button-cancel-bg;
+    color: $button-cancel-text;
+}
+
+.button-delete {
+    background-color: $button-delete-bg;
+    color: $button-delete-text;
+}
+
+.button-add {
+    background-color: $button-add-bg;
+    color: $button-add-text;
+}
+
+.button-buy {
+    background-color: $button-buy-bg;
+    color: $button-buy-text;
+}
+
+.button-sell {
+    background-color: $button-sell-bg;
+    color: $button-sell-text;
+}
+
+.button-report{
+    background-color: $button-report-bg;
+    color: $button-report-text;
+    height: 36px;
+}
+
+
+.button-edit {
+    background-color: $button-edit-bg;
+    color: $button-edit-text;
+}
+
+
+.button-suspend {
+    background-color: $button-suspend-bg;
+    color: $button-suspend-text;
+}
+
+.button-confirm {
+    background-color: $button-confirm-bg;
+    color: $button-confirm-text;
+}
+
+.button-label-right{
+    background-color: #ffc93a;
+    color: #000;
+}
+
+.offer-type-btn-group{
+    border: 1px solid #ddd !important;
+}
+
+.offer-submit-btn{
+    min-width: 120px;
+}
