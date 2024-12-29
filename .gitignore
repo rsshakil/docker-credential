@@ -1,1 +1,2 @@
-docker/containerFile
+docker/containerFile/
+docker/redis/dump.rdb

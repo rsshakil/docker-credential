@@ -23,7 +23,7 @@ services:
       - ./docker/buildFile/mysql/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./docker/containerFile/db/mysql:/var/lib/mysql
     ports:
-      - "${IP}:${MYSQL_PORT}:3306"
+      - "${MYSQL_PORT}:3306"
     networks:
       - phalco-network
 
@@ -33,7 +33,7 @@ services:
     build:
       context: ./docker/buildFile/php
     ports:
-      - "${IP}:${PHP_PORT}:80"
+      - "${PHP_PORT}:80"
     volumes:
       - ${APP_CODE_PATH_SRC}:${APP_CODE_PATH_CONTAINER}
       - ${APACHE_LOG_DIR}:/var/log/apache2
