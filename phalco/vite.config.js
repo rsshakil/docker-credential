@@ -7,7 +7,13 @@ import * as path from "node:path";
 export default defineConfig({
     server: {
         host: '0.0.0.0',
-        port: 5173
+        port: 5173,
+        proxy: {
+            '/@vite/client': {
+                target: 'http://52.53.159.110:5173',
+                changeOrigin: true,  // To avoid CORS issues
+            },
+        },
       },
     plugins: [
         laravel({
